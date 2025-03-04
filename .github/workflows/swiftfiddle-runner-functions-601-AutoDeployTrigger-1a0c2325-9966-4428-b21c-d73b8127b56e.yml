@@ -4,15 +4,14 @@ name: Trigger auto deployment for swiftfiddle-runner-functions-601
 on:
   # Automatically trigger it when detected changes in repo
   push:
-    branches: 
-      [ main ]
+    branches: [main]
     paths:
-    - '**'
-    - '.github/workflows/swiftfiddle-runner-functions-601-AutoDeployTrigger-1a0c2325-9966-4428-b21c-d73b8127b56e.yml'
+      - "**"
+      - ".github/workflows/swiftfiddle-runner-functions-601-AutoDeployTrigger-1a0c2325-9966-4428-b21c-d73b8127b56e.yml"
 
-  # Allow manual trigger 
+  # Allow manual trigger
   workflow_dispatch:
-      
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -36,9 +35,4 @@ jobs:
           registryPassword: ${{ secrets.SWIFTFIDDLERUNNERFUNCTIONS601_REGISTRY_PASSWORD }}
           containerAppName: swiftfiddle-runner-functions-601
           resourceGroup: swiftfiddle
-          imageToBuild: kishikawakatsumi/swiftfiddle-runner-functions-601:${{ github.sha }}
-          
-            
-
-     
-
+          imageToBuild: kishikawakatsumi/swiftfiddle-runner-functions-601:latest
